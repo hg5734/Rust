@@ -10,7 +10,7 @@ pub fn string_op() {
     s2.push_str(" there");
     println!("{}", s2);
     let s3 = String::from("hello ") + &s2 + &s1;
-    println!("{} {}", s3, s2);
+    println!("****{}", s3);
     // slice string
     let slice = &s3[0..5];
     println!("{}", slice);
