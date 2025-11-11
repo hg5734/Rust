@@ -70,11 +70,3 @@ pub fn mutable_heap() {
 pub fn xyz(x: &mut String) {
     x.push_str("aaaa");
 }
-
-
-
-
-
-
-
-
