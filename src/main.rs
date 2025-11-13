@@ -1,11 +1,31 @@
 mod fundamentals;
+mod examples;
+mod web;
+use tokio;
 
-fn main() {
-    test_op();
+#[tokio::main]
+async fn main() -> std::io::Result<()>  {
+    let is_web = true;
+    if is_web {
+        let _ = web::web::start_server().await;
+    }
+    
+    let is_example = false;
+    if is_example {
+        examples::download::spwan_downloads().await;
+        examples::download::downloads().await;
+    }
+
+    let is_basic = false;
+    if is_basic {
+        test_op();
+        //async await
+        fundamentals::aysncs_test::test().await;
+    }
+    Ok(())
 }
 
 fn test_op() {
-    println!("Hello, world!");
     println!("add fn {}", fundamentals::basic::add());
     let mut x: f32 = 10.1;
     let mut y: f32 = 20.9;
@@ -29,6 +49,6 @@ fn test_op() {
     fundamentals::traits::trait_test();
     //lifecycles
     fundamentals::lifecycles::lifecycle_test();
-    // multithread
+    //multithread
     fundamentals::multithread::multithread_test();
 }
