@@ -1,0 +1,18 @@
+{
+    "rust-analyzer.cargo.features": [
+        "all"
+    ],
+    "rust-analyzer.checkOnSave": true,
+    "rust-analyzer.check.command": "clippy",
+    "rust-analyzer.inlayHints.enable": true,
+    "editor.inlineSuggest.enabled": true,
+    "editor.formatOnSave": true,
+    "[rust]": {
+        "editor.defaultFormatter": "rust-lang.rust-analyzer"
+    },
+    "errorLens.enabled": true,
+    "cSpell.words": [
+        "Himanshu",
+        "LAMPORTS"
+    ]
+}
