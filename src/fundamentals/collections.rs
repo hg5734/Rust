@@ -1,7 +1,4 @@
-use std::{
-    collections::HashMap,
-    fmt::Debug,
-};
+use std::{collections::HashMap, fmt::Debug};
 
 pub fn collections() {
     //vectors
@@ -20,12 +17,12 @@ pub fn collections() {
     println!("{}", vector1.iter().sum::<i32>());
     println!("{:?}", vector1.iter().filter(|x| *x % 2 == 0).next());
     println!("{:?}", vector1.iter().map(|x| *x + 1).next());
-    //generic 
+    //generic
     print_debug(42);
     print_debug("Hello");
 }
 
 //generic
-fn print_debug<T: Debug >(x: T) {
+fn print_debug<T: Debug>(x: T) {
     println!("{:?}", x);
 }

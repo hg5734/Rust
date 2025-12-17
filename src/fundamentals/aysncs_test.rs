@@ -1,7 +1,10 @@
-use std::{ time::Duration};
+use std::time::Duration;
 
-use tokio::{join, task::{self,  JoinHandle}, time::sleep};
-
+use tokio::{
+    join,
+    task::{self, JoinHandle},
+    time::sleep,
+};
 
 async fn hello() -> String {
     "hello future generated".to_string()
@@ -24,11 +27,11 @@ async fn might_fail(success: bool) -> Result<String, String> {
     }
 }
 
-pub async fn test()  {
-    println!("{}",hello().await);
-    //call multiple future together 
+pub async fn test() {
+    println!("{}", hello().await);
+    //call multiple future together
     join!(task_fn(3), task_fn(4));
-    // parallel execution 
+    // parallel execution
     task_fn(1).await;
     task_fn(2).await;
     sleep(Duration::from_secs(2)).await;
@@ -36,8 +39,6 @@ pub async fn test()  {
 
     match might_fail(false).await {
         Ok(msg) => println!("{}", msg),
-        Err(e) =>  println!("{}", e),
+        Err(e) => println!("{}", e),
     }
-    
-
 }

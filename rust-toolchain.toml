@@ -1,0 +1,11 @@
+# rust-toolchain.toml
+[toolchain]
+channel = "stable"
+components = [
+  "rustfmt",
+  "clippy",
+  "rust-analyzer"
+]
+targets = [
+  "wasm32-unknown-unknown"
+]

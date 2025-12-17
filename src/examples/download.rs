@@ -1,6 +1,9 @@
 use std::time::Duration;
 
-use tokio::{join, task, time::{sleep, Instant}};
+use tokio::{
+    join, task,
+    time::{Instant, sleep},
+};
 
 async fn download_with_retry(url: &str, retries: u8) -> Result<String, reqwest::Error> {
     for attempt in 1..=retries {
@@ -22,11 +25,11 @@ async fn download_with_retry(url: &str, retries: u8) -> Result<String, reqwest::
 pub async fn downloads() {
     let start = Instant::now();
     let (res1, res2) = join!(
-        download_with_retry("https://httpbin.org/ip",3),
-        download_with_retry("https://wrsddsf",3) //wrong url for generating error
+        download_with_retry("https://httpbin.org/ip", 3),
+        download_with_retry("https://wrsddsf", 3) //wrong url for generating error
     );
 
-    for  (i, res) in [res1, res2].iter().enumerate() {
+    for (i, res) in [res1, res2].iter().enumerate() {
         match res {
             Ok(content) => {
                 println!("Response {i} len: {:?}", content);
@@ -46,7 +49,9 @@ pub async fn spwan_downloads() {
     for url in urls {
         let url = url.to_string();
         let handle = task::spawn(async move {
-            download_with_retry(&url,3).await.map(|r| format!("{} -> len {}", url, r.len()))
+            download_with_retry(&url, 3)
+                .await
+                .map(|r| format!("{} -> len {}", url, r.len()))
         });
         handles.push(handle);
     }
@@ -63,5 +68,4 @@ pub async fn spwan_downloads() {
         }
     }
     println!("Elapsed: {:?}", start.elapsed());
-
 }

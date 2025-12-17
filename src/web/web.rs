@@ -1,4 +1,4 @@
-use actix_web::{App, HttpServer, Responder, get};
+use actix_web::{App, HttpServer};
 
 use crate::web::routes::{echo, hello};
 

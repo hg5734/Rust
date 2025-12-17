@@ -1,15 +1,15 @@
-mod fundamentals;
 mod examples;
+mod fundamentals;
 mod web;
 use tokio;
 
 #[tokio::main]
-async fn main() -> std::io::Result<()>  {
+async fn main() -> std::io::Result<()> {
     let is_web = true;
     if is_web {
         let _ = web::web::start_server().await;
     }
-    
+
     let is_example = false;
     if is_example {
         examples::download::spwan_downloads().await;

@@ -1,6 +1,4 @@
-use std::{
-    fs
-};
+use std::fs;
 struct Person {
     username: String,
     email: String,

@@ -6,7 +6,6 @@ struct MyBank {
 trait Bank {
     fn deposit(&mut self, name: &str, amount: u16);
     fn balance(&self, name: &str) -> u16;
-
 }
 
 impl Bank for MyBank {
@@ -21,7 +20,9 @@ impl Bank for MyBank {
 }
 
 pub fn trait_test() {
-    let mut bank = MyBank { accounts: HashMap::new() };
+    let mut bank = MyBank {
+        accounts: HashMap::new(),
+    };
     bank.deposit("Himanshu", 100);
     bank.deposit("Himanshu", 50);
 
